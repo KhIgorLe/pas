@@ -1,0 +1,11 @@
+tr
+  td
+    = product_shop.vendor_code
+  td
+    = product_shop.name
+  td
+    = product_shop.amount
+  - if params[:columns]
+    - params[:columns].each do |column|
+      td
+        = product_shop.send(column)
