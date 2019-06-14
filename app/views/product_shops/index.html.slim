@@ -15,7 +15,7 @@ table
           th
             = column
     tr
-  = render @product_shops
+  = render @product_shops.includes(:shop, :product)
   thead
 
 => link_to 'Save to XLSX', product_shops_path(params: params, format: :xlsx)

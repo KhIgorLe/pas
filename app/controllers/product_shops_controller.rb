@@ -1,7 +1,7 @@
 class ProductShopsController < ApplicationController
   def index
     @product_shops = ProductShop.filter_by(filter_params)
-    @fields_for_select = Services::Report.new.fields_for_select
+    @fields_for_select = Services::Report.fields_for_select
     @all_fields = all_fields
 
     respond_to do |format|
