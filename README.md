@@ -1,24 +1,11 @@
-# README
+Start project:
+Rails 5.2.3
+ruby 2.5.1p57
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+$ git clone https://github.com/KhIgorLe/pas.git
+$ bundle install
+$ cp config/database.yml.sample config/database.yml
 
-Things you may want to cover:
+configure settings for database
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+$ rails db:setup
