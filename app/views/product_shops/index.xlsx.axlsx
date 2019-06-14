@@ -1,0 +1,10 @@
+xlsx_package = Axlsx::Package.new
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Sheet1") do |sheet|
+
+  sheet.add_row @all_fields
+  @product_shops.each do |product_shop|
+    sheet.add_row(@all_fields.map { |field| product_shop.send(field) })
+  end
+end

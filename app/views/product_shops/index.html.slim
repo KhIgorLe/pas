@@ -1,0 +1,22 @@
+= form_tag product_shops_path, method: :get, enforce_utf8: false do
+  = select_tag :shop_id, options_from_collection_for_select(Shop.all, :id, :name, params[:shop_id]), multiple: true, include_blank: nil
+  = select_tag :columns, options_for_select(@fields_for_select, selected: params[:columns]), multiple: true, include_blank: nil
+
+  = button_tag 'search', type: 'submit', name: nil
+
+table
+  thead
+    tr
+      th vendor code
+      th name
+      th amount
+      - if params[:columns]
+        - params[:columns].each do |column|
+          th
+            = column
+    tr
+  = render @product_shops.includes(:shop, :product)
+  thead
+
+=> link_to 'Save to XLSX', product_shops_path(params: params, format: :xlsx)
+= link_to 'Save to XLS', product_shops_path(params: params, format: :xls)

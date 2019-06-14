@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">vendor_code</Data></Cell>
+        <Cell><Data ss:Type="String">name</Data></Cell>
+        <Cell><Data ss:Type="String">amount</Data></Cell>
+        <% if params[:columns] %>
+           <% params[:columns].each do |column| %>
+              <Cell><Data ss:Type="String"><%= column %></Data></Cell>
+           <% end %>
+        <% end %>
+      </Row>
+      <% @product_shops.each do |product_shop| %>
+        <Row>
+          <% @all_fields.each do |field| %>
+            <Cell><Data ss:Type="String"><%= product_shop.send(field) %></Data></Cell>
+          <% end %>
+        </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
